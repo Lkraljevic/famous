@@ -9,7 +9,6 @@
     "directories": {
         "lib": "dist/common"
     },
-    "main": "dist/common/index.js",
     "keywords": [
         "famous"
     ],
