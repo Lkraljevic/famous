@@ -7,7 +7,7 @@
         "url": "https://github.com/famous/famous"
     },
     "directories": {
-        "lib": "dist/common/"
+        "lib": "./dist/common/"
     },
     "keywords": [
         "famous"
