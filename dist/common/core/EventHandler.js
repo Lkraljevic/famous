@@ -31,15 +31,15 @@ EventHandler.setOutputHandler = function setOutputHandler(object, handler) {
     object.addListener = object.on;
     object.removeListener = handler.removeListener.bind(handler);
 };
-EventHandler.prototype.emit = function emit(type, event) {
+EventHandler.prototype.emit = function emit(type, event, e) {
     EventEmitter.prototype.emit.apply(this, arguments);
     var i = 0;
     for (i = 0; i < this.downstream.length; i++) {
         if (this.downstream[i].trigger)
-            this.downstream[i].trigger(type, event);
+            this.downstream[i].trigger(type, event, e);
     }
     for (i = 0; i < this.downstreamFn.length; i++) {
-        this.downstreamFn[i](type, event);
+        this.downstreamFn[i](type, event, e);
     }
     return this;
 };

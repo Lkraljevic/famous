@@ -75,16 +75,17 @@ define(function(require, exports, module) {
      * @param {Object} event event data
      * @return {EventHandler} this
      */
-    EventHandler.prototype.emit = function emit(type, event) {
-        EventEmitter.prototype.emit.apply(this, arguments);
-        var i = 0;
-        for (i = 0; i < this.downstream.length; i++) {
-            if (this.downstream[i].trigger) this.downstream[i].trigger(type, event);
-        }
-        for (i = 0; i < this.downstreamFn.length; i++) {
-            this.downstreamFn[i](type, event);
-        }
-        return this;
+    EventHandler.prototype.emit = function emit(type, event, e) {
+      EventEmitter.prototype.emit.apply(this, arguments);
+      var i = 0;
+      for (i = 0; i < this.downstream.length; i++) {
+        if (this.downstream[i].trigger)
+          this.downstream[i].trigger(type, event, e);
+      }
+      for (i = 0; i < this.downstreamFn.length; i++) {
+        this.downstreamFn[i](type, event, e);
+      }
+      return this;
     };
 
     /**

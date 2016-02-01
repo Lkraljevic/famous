@@ -9,11 +9,11 @@ function EventEmitter() {
     this.listeners = {};
     this._owner = this;
 }
-EventEmitter.prototype.emit = function emit(type, event) {
+EventEmitter.prototype.emit = function emit(type, event, e) {
     var handlers = this.listeners[type];
     if (handlers) {
         for (var i = 0; i < handlers.length; i++) {
-            handlers[i].call(this._owner, event);
+            handlers[i].call(this._owner, event, e);
         }
     }
     return this;

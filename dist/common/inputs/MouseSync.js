@@ -113,7 +113,7 @@ function _handleStart(event) {
         position: payload.position.slice ? payload.position.slice(0) : payload.position,
         time: this._prevTime
     });
-    this._eventOutput.emit('start', payload);
+    this._eventOutput.emit('start', payload, event);
     this._documentActive = false;
 }
 function _handleMove(event) {
@@ -175,7 +175,7 @@ function _handleMove(event) {
         position: payload.position.slice ? payload.position.slice(0) : payload.position,
         time: currTime
     });
-    this._eventOutput.emit('update', payload);
+    this._eventOutput.emit('update', payload, event);
     this._prevCoord = [
         x,
         y
@@ -186,7 +186,7 @@ function _handleMove(event) {
 function _handleEnd(event) {
     if (!this._down)
         return;
-    this._eventOutput.emit('end', this._payload);
+    this._eventOutput.emit('end', this._payload, event);
     this._prevCoord = undefined;
     this._prevTime = undefined;
     this._down = false;

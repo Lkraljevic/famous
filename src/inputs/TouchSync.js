@@ -110,7 +110,7 @@ define(function(require, exports, module) {
         payload.count = data.count;
         payload.touch = data.identifier;
 
-        this._eventOutput.emit('start', payload);
+        this._eventOutput.emit('start', payload, data);
     }
 
     /**
@@ -180,7 +180,7 @@ define(function(require, exports, module) {
         payload.count    = data.count;
         payload.touch    = data.identifier;
 
-        this._eventOutput.emit('update', payload);
+        this._eventOutput.emit('update', payload, data);
     }
 
     /**
@@ -190,7 +190,7 @@ define(function(require, exports, module) {
      */
     function _handleEnd(data) {
         this._payload.count = data.count;
-        this._eventOutput.emit('end', this._payload);
+        this._eventOutput.emit('end', this._payload, data);
     }
 
     /**

@@ -70,7 +70,7 @@ function _handleStart(data) {
     payload.clientY = data.y;
     payload.count = data.count;
     payload.touch = data.identifier;
-    this._eventOutput.emit('start', payload);
+    this._eventOutput.emit('start', payload, data);
 }
 function _handleMove(data) {
     var history = data.history;
@@ -127,11 +127,11 @@ function _handleMove(data) {
     payload.clientY = data.y;
     payload.count = data.count;
     payload.touch = data.identifier;
-    this._eventOutput.emit('update', payload);
+    this._eventOutput.emit('update', payload, data);
 }
 function _handleEnd(data) {
     this._payload.count = data.count;
-    this._eventOutput.emit('end', this._payload);
+    this._eventOutput.emit('end', this._payload, data);
 }
 TouchSync.prototype.setOptions = function setOptions(options) {
     return this._optionsManager.setOptions(options);

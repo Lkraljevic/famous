@@ -149,7 +149,7 @@ define(function(require, exports, module) {
             time: this._prevTime
         });
 
-        this._eventOutput.emit('start', payload);
+        this._eventOutput.emit('start', payload, event);
         this._documentActive = false;
     }
 
@@ -227,7 +227,7 @@ define(function(require, exports, module) {
           time: currTime
         });
 
-        this._eventOutput.emit('update', payload);
+        this._eventOutput.emit('update', payload, event);
 
         this._prevCoord = [x, y];
         this._prevTime = currTime;
@@ -244,7 +244,7 @@ define(function(require, exports, module) {
     function _handleEnd(event) {
         if (!this._down) return;
 
-        this._eventOutput.emit('end', this._payload);
+        this._eventOutput.emit('end', this._payload, event);
         this._prevCoord = undefined;
         this._prevTime = undefined;
         this._down = false;
