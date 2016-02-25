@@ -87,7 +87,7 @@ define(function(require, exports, module) {
      *  @method _handleStart
      *  @private
      */
-    function _handleStart(data) {
+    function _handleStart(data, event) {
         var velocity;
         var delta;
         if (this.options.direction !== undefined){
@@ -110,7 +110,7 @@ define(function(require, exports, module) {
         payload.count = data.count;
         payload.touch = data.identifier;
 
-        this._eventOutput.emit('start', payload, data);
+        this._eventOutput.emit('start', payload, event);
     }
 
     /**
